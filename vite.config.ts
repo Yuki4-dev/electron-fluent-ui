@@ -23,7 +23,15 @@ export default defineConfig(({ command }) => {
     return {
         root: "src/renderer",
         build: {
+            target: "modules",
+            
             outDir: "../../dist-renderer",
+            rollupOptions: {
+                output: {
+                    esModule: true,
+                    format: "esm",
+                },
+            },
         },
         resolve,
         plugins: [
@@ -38,10 +46,14 @@ export default defineConfig(({ command }) => {
                         resolve,
                         build: {
                             sourcemap,
-                            minify: isBuild,
+                            target: "modules",
+                            minify: false,
                             outDir: "dist-main",
                             rollupOptions: {
                                 external: Object.keys("dependencies" in pkg ? pkg.dependencies : {}),
+                                output: {
+                                    format: 'es', // ESモジュールとして出力
+                                  },
                             },
                         },
                     },
@@ -55,12 +67,17 @@ export default defineConfig(({ command }) => {
                     },
                     vite: {
                         resolve,
+
                         build: {
+                            target: "modules",
                             sourcemap: sourcemap ? "inline" : undefined,
-                            minify: isBuild,
+                            minify: false,
                             outDir: "dist-preload",
                             rollupOptions: {
                                 external: Object.keys("dependencies" in pkg ? pkg.dependencies : {}),
+                                output: {
+                                    format: 'es', // ESモジュールとして出力
+                                  },
                             },
                         },
                     },

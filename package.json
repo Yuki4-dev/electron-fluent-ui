@@ -3,6 +3,7 @@
     "description": "Quickstart repository for electron applications using Fluent UI React",
     "version": "3.3.0",
     "license": "MIT",
+    "type": "module",
     "author": {
         "email": "oliver.schwendener@proton.me",
         "name": "Oliver Schwendener",
@@ -24,6 +25,7 @@
         "typecheck:renderer": "tsc -p src/renderer/tsconfig.json --noEmit"
     },
     "devDependencies": {
+        "@tsconfig/node-lts-strictest-esm": "^18.12.1",
         "@types/react": "^18.2.22",
         "@types/react-dom": "^18.2.7",
         "@types/react-router-dom": "^5.3.3",
@@ -45,6 +47,7 @@
     "dependencies": {
         "@fluentui/react-components": "^9.34.0",
         "@fluentui/react-icons": "^2.0.218",
+        "electron-store": "^8.1.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-router": "^6.16.0",

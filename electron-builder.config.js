@@ -9,6 +9,7 @@ const config = {
         output: "release",
         buildResources: "build",
     },
+    asar:false,
     files: ["dist-main/index.js", "dist-preload/index.js", "dist-renderer/**/*"],
     extraMetadata: {
         version: process.env.VITE_APP_VERSION,

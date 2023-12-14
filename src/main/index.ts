@@ -1,9 +1,12 @@
 import { app, BrowserWindow, ipcMain, IpcMainEvent, nativeTheme } from "electron";
+import ElectronStore from "electron-store";
 import { join } from "path";
 
 const createBrowserWindow = (): BrowserWindow => {
     const preloadScriptFilePath = join(__dirname, "..", "dist-preload", "index.js");
-
+    const s = new ElectronStore();
+    console.log(s.get("a"));
+    s.set("a",s);
     return new BrowserWindow({
         autoHideMenuBar: true,
         webPreferences: {
